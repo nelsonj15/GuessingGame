@@ -1,8 +1,8 @@
 /*
- * CSC 422 Spring 2019 - Prj Week 2 GuessingGameUnlimitiedAttemptsHighLow
+ * CSC 422 Spring 2019 - Prj Week 2 GuessingGameUnlimitiedAttemptsHighLowNumberOfTriesDisplayed
  * Created by: Rob Nelson
  * Creation Date: 01/27/19
- * Revision Date: 01/27/19
+ * Revision Date: 01/28/19
  */
 package guessinggame;
 
@@ -26,6 +26,7 @@ public class GuessingGame {
 
         int number = random.nextInt(10);
         int guess = -1;
+        int count = 0;
 
         // Loop until the user has guessed the number
 
@@ -38,6 +39,7 @@ public class GuessingGame {
             // Read the users guess
 
             guess = scanner.nextInt();
+            count++;
 
             // Check if the guess is high, low or correct
 
@@ -57,7 +59,7 @@ public class GuessingGame {
 
                 // Guess is correct !!
 
-                System.out.println("Correct, the number was " + number);
+                System.out.println("Correct, the number was " + number + ". You needed " + count + " times");
             }
         }
     }
