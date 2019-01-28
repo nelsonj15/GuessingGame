@@ -1,11 +1,9 @@
 /*
- * CSC 422 Spring 2019 - Prj Week 2 GuessingGame
+ * CSC 422 Spring 2019 - Prj Week 2 GuessingGameUnlimitiedAttempts
  * Created by: Rob Nelson
  * Creation Date: 01/27/19
  * Revision Date: 01/27/19
  */
-
-
 package guessinggame;
 
 import java.util.Random;
@@ -15,43 +13,44 @@ public class GuessingGame {
 
     public static void main(String[] args) {
 
-            Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         Random generator = new Random();
-        
-        final int MAX = 100;
+
+        int MIN = 0;
+        int MAX = 100;
         int answer;
         int guess;
         String another = "y";
         boolean flag = false;
         boolean anotherFlag = true;
-        
-        while(anotherFlag){
-            answer = generator.nextInt(MAX) + 1;
-            
-            System.out.println("I'm thinkin of a number between 1 and " + MAX );
-            System.out.println("Can you guess what it is? \n");
+
+        while (anotherFlag) {
+            answer = generator.nextInt(MAX + 1);
+
+            System.out.println("I'm thinkin of a number between 0 and " + MAX + "\n");
+            System.out.println("Can you guess what it is: ");
             flag = false;
-            while(!flag) {
+            while (!flag) {
                 guess = scan.nextInt();
-                
-                if(guess == answer){
+
+                if (guess == answer) {
                     System.out.println("You guessed correctly");
                     flag = true;
-                            
-                } else{
+
+                } else {
                     System.out.println("That was wrong, try again.");
                 }
             }
-        
+
             System.out.println("Want to Play again?(y/n)");
             another = scan.next();
-            
-            if(another.equalsIgnoreCase("y") == true){
+
+            if (another.equalsIgnoreCase("y") == true) {
                 anotherFlag = true;
-            } else{
+            } else {
                 anotherFlag = false;
             }
+        }
+
     }
-    
-}
 }
