@@ -1,5 +1,5 @@
 /*
- * CSC 422 Spring 2019 - Prj Week 2 GuessingGameUnlimitiedAttempts
+ * CSC 422 Spring 2019 - Prj Week 2 GuessingGameUnlimitiedAttemptsHighLow
  * Created by: Rob Nelson
  * Creation Date: 01/27/19
  * Revision Date: 01/27/19
@@ -13,44 +13,53 @@ public class GuessingGame {
 
     public static void main(String[] args) {
 
-        Scanner scan = new Scanner(System.in);
-        Random generator = new Random();
+        // Create a random number generator
 
-        int MIN = 0;
-        int MAX = 100;
-        int answer;
-        int guess;
-        String another = "y";
-        boolean flag = false;
-        boolean anotherFlag = true;
+        Random random = new Random();
 
-        while (anotherFlag) {
-            answer = generator.nextInt(MAX + 1);
+        // Use Scanner for getting input from user
 
-            System.out.println("I'm thinkin of a number between 0 and " + MAX + "\n");
-            System.out.println("Can you guess what it is: ");
-            flag = false;
-            while (!flag) {
-                guess = scan.nextInt();
+        Scanner scanner = new Scanner(System.in);
 
-                if (guess == answer) {
-                    System.out.println("You guessed correctly");
-                    flag = true;
+        // Use the random generator to 
+        // pick a number between 0 and 99 (inclusive)
 
-                } else {
-                    System.out.println("That was wrong, try again.");
-                }
-            }
+        int number = random.nextInt(10);
+        int guess = -1;
 
-            System.out.println("Want to Play again?(y/n)");
-            another = scan.next();
+        // Loop until the user has guessed the number
 
-            if (another.equalsIgnoreCase("y") == true) {
-                anotherFlag = true;
+        while (guess != number) {
+
+            // Prompt the user for their next guess
+
+            System.out.print("Guess a number between 0-100: P.S. I will tell you if you are too low, or too high. Good Luck  \n  ");
+
+            // Read the users guess
+
+            guess = scanner.nextInt();
+
+            // Check if the guess is high, low or correct
+
+            if (guess < number) {
+
+                // Guess is too low
+
+                System.out.println("Too low, please try again");
+
+            } else if (guess > number) {
+
+                // Guess is too high
+
+                System.out.println("Too high, please try again");
+
             } else {
-                anotherFlag = false;
+
+                // Guess is correct !!
+
+                System.out.println("Correct, the number was " + number);
             }
         }
-
     }
+
 }
